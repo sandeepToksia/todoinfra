@@ -5,12 +5,6 @@ terraform {
       version = "4.11.0"
     }
   }
-  backend "azurerm" {
-    resource_group_name  = "ToDoApp-Rg"
-    storage_account_name = "babustore"
-    container_name       = "todocontainer"
-    key                  = "dev.terraform.tfstate"
-  }
 }
 
 provider "azurerm" {
