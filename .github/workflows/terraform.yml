@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   terraform:
     name: Terraform Deploy
@@ -18,32 +22,38 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # Azure Login (Service Principal)
       - name: Azure Login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      # Terraform Setup
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: latest
 
+      # tfsec scan
       - name: Run tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
         with:
           working_directory: envirment/dev
 
+      # Terraform Init
       - name: Terraform Init
         run: terraform init
 
+      # Terraform Validate
       - name: Terraform Validate
         run: terraform validate
 
+      # Terraform Plan
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+      # Terraform Apply
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
