@@ -4,14 +4,14 @@ dev_rgs = {
   }
 }
 
-dev_acrs = {
-  "acr1" = {
-    acr_name = "devtodoacrwestus2"
-    rg_name  = "dev-todo-rg-westus1"
-    location = "West US"
-    sku      = "Standard"
-  }
-}
+# dev_acrs = {
+#   "acr1" = {
+#     acr_name = "devtodoacrwestus2"
+#     rg_name  = "dev-todo-rg-westus1"
+#     location = "West US"
+#     sku      = "Standard"
+#   }
+# }
 
 dev_aks_clusters = {
   "dev-todo-aks-westus" = {
@@ -34,14 +34,14 @@ dev_aks_clusters = {
   }
 }
 
-servers_dbs = {
-  "devtododbsrvwus1" = {
-    resource_group_name            = "dev-todo-rg-westus1"
-    location                       = "Central India"
-    version                        = "12.0"
-    administrator_login            = "devopsadmin"
-    administrator_login_password   = "P@ssw01rd@123"
-    allow_access_to_azure_services = true
-    dbs                            = ["todoappdb"]
-  }
-}
+# servers_dbs = {
+#   "devtododbsrvwus1" = {
+#     resource_group_name            = "dev-todo-rg-westus1"
+#     location                       = "Central India"
+#     version                        = "12.0"
+#     administrator_login            = "devopsadmin"
+#     administrator_login_password   = "P@ssw01rd@123"
+#     allow_access_to_azure_services = true
+#     dbs                            = ["todoappdb"]
+#   }
+# }
